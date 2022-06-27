@@ -1,4 +1,4 @@
-name = "effidit_checkver"
+name = "scoop_checkver"
 type = "javascript"
 
 account_id = ""
