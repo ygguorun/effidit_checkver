@@ -6,7 +6,7 @@ addEventListener('fetch', event => {
  * @param {Request} request
  */
 async function handleRequest(request) {
-  console.log('fetch event:', request.url.split('/'))
+  // console.log('fetch event:', request.url.split('/'))
   softwareName = request.url.split('/')[3]
   var latestVersion = '404'
   switch (softwareName) {
@@ -18,6 +18,9 @@ async function handleRequest(request) {
       break;
     case 'axmath':
       latestVersion = await axmathCheckver()
+      break;
+    case 'jy-srt-tools':
+      latestVersion = await jySrtToolsCheckver()
       break;
     default:
       latestVersion = '404'
@@ -99,5 +102,23 @@ async function axmathCheckver() {
     version: version,
     sha256: sha256,
     downloadUrl: downloadUrl
+  })
+}
+
+async function jySrtToolsCheckver() {
+  const baseUrl = 'https://github.com/jackychu0830/jy-srt-tools/releases'
+  var versionReg = /([\d.]+)-Win/g;
+
+  var homeBody = await (await fetch(baseUrl, {
+    method: 'GET',
+    headers: {
+      'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.0.0 Safari/537.36'
+    }
+  })).text();
+
+  var version = versionReg.exec(homeBody)[1];
+  return JSON.stringify({
+    name: 'jy-srt-tools',
+    version: version
   })
 }
