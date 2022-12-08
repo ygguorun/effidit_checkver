@@ -32,7 +32,7 @@ async function handleRequest(request) {
 
 async function effiditCheckver() {
   const baseUrl = 'https://effidit.qq.com/'
-  var jsUrlReg = /src=(js\/app.*\.js)/g;
+  var jsUrlReg = /src=(assets\/js\/app.*\.js)/g;
   var homeBody = await (await fetch(baseUrl, {
     method: 'GET',
     headers: {
