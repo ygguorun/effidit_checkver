@@ -59,7 +59,7 @@ async function effiditCheckver() {
 
 async function axglyphCheckver() {
   const baseUrl = 'https://www.amyxun.com'
-  var versionReg = /AxGlyphV([\d.]+)/g;
+  var versionReg = /AxGlyph +V([\d.]+)/g;
   var sha256Reg = /SHA256: ([A-Fa-f0-9]{64})/g;
   var downloadUrlReg = /href='(.*?AxGlyph_Setup_Win.*?zip.*?)'/g;
   var homeBody = await (await fetch(baseUrl, {
@@ -84,7 +84,7 @@ async function axglyphCheckver() {
 
 async function axmathCheckver() {
   const baseUrl = 'https://www.amyxun.com'
-  var versionReg = /AxMathV([\d.]+)/g;
+  var versionReg = /AxMath +V([\d.]+)/g;
   var sha256Reg = /SHA256: ([A-Fa-f0-9]{64})/g;
   var downloadUrlReg = /href='(.*?AxMath_Setup_Win.*?zip.*?)'/g;
   var homeBody = await (await fetch(baseUrl, {
